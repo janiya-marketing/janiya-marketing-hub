@@ -36,3 +36,38 @@ p {
     font-size: 18px;
     line-height: 1.6;
 }
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #ffffff;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #111827;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.services {
+    text-align: center;
+}
+
+.service-card {
+    background-color: #ffffff;
+    margin: 20px auto;
+    padding: 25px;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.service-card h3 {
+    color: #111827;
+}
