@@ -1,46 +1,282 @@
-<header>
-    <div class="logo">
-        <h1>JANIYA</h1>
-        <p>Marketing Hub</p>
-    </div>
+  <!DOCTYPE html>
+<html lang="en">
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-    </nav>
-</header>
+<head>
 
-<section class="hero">
-    <h2>Grow Your Business With Us</h2>
-    <p>
-        We provide digital marketing solutions, creative designs,
-        and business support to help brands grow.
-    </p>
+    <meta charset="UTF-8">
 
-    <a href="#" class="btn">Get Started</a>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JANIYA Customer Marketing System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>JANIYA</h2>
+
+            <p>Customer Marketing</p>
+
+        </div>
+
+        <nav>
+
+            <button class="menu-btn active" data-section="dashboard">
+                🏠 Dashboard
+            </button>
+
+           <button class="menu-btn" data-section="customers">
+                👥 Customers
+            </button> 
+
+            <button class="menu-btn" data-section="communication">
+                💬 Communication
+            </button>
+
+            <button class="menu-btn" data-section="marketing">
+                📢 Marketing
+            </button>
+
+            <button class="menu-btn" data-section="settings">
+                ⚙ Settings
+            </button>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="content">
+
+        <!-- Dashboard -->
+
+        <section id="dashboard" class="page active-page">
+
+            <h1>Welcome to JANIYA Customer Marketing System</h1>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>Total Customers</h3>
+
+                    <h2 id="totalCustomers">0</h2>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Today's Messages</h3>
+
+                    <h2 id="todayMessages">0</h2>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Marketing Campaigns</h3>
+
+                    <h2 id="campaignCount">0</h2>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Customers -->
+
+       <section id="customers" class="page">
+
+
+<h1>Customer Database</h1>
+
+
+<button id="addCustomerBtn">
+    + Add Customer
+</button>
+
+
+
+<div id="customerForm" class="form-box">
+
+
+<h2>Add New Customer</h2>
+
+
+<input 
+id="customerName"
+type="text"
+placeholder="Customer Name">
+
+
+
+<input 
+id="customerPhone"
+type="text"
+placeholder="Phone Number">
+
+
+
+<input 
+id="customerEmail"
+type="email"
+placeholder="Email Address">
+
+
+
+<select id="customerGroup">
+
+<option>Regular</option>
+
+<option>VIP</option>
+
+<option>Wholesale</option>
+
+</select>
+
+
+
+<textarea
+id="customerNotes"
+placeholder="Customer Notes">
+</textarea>
+
+
+
+<button id="saveCustomer">
+Save Customer
+</button>
+
+
+</div>
+
+
+
+
+ <div class="table-box">
+
+<h2>Customers</h2>
+
+<input
+id="searchCustomer"
+placeholder="Search customer...">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+
+<th>Phone</th>
+
+<th>Group</th>
+
+<th>Email</th>
+
+<th>Date Joined</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="customerList">
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
 </section>
 
-<section class="services">
-    <h2>Our Services</h2>
+        <!-- Communicati<table>on -->
 
-    <div class="service-card">
-        <h3>Digital Marketing</h3>
-        <p>Helping businesses reach more customers online.</p>
-    </div>
+       <section id="communication" class="page">
 
-    <div class="service-card">
-        <h3>Social Media Management</h3>
-        <p>Creating and managing content that grows your brand.</p>
-    </div>
+    <h1>Communication Center</h1>
 
-    <div class="service-card">
-        <h3>Branding & Creative Design</h3>
-        <p>Professional designs that make your business stand out.</p>
-    </div>
+    <p>Send messages to your customers.</p>
+
+
+    <select id="messageCustomer">
+
+        <option value="">
+            Select Customer
+        </option>
+
+    </select>
+
+
+    <textarea
+        id="messageText"
+        placeholder="Write your message here..."
+        rows="6">
+    </textarea>
+
+
+    <br><br>
+
+
+    <button id="sendWhatsApp">
+    📱 Send WhatsApp
+</button>
+
+<button id="sendSMS">
+    💬 Send SMS
+</button>
+
+<button id="sendAllSMS">
+    📢 Send SMS to All Customers
+</button>
+
+
 </section>
 
-</footer>
-    <h3>Janiya Marketing Hub</h3>
-    <p>Email: info@janiyamarketing.com</p>
-</footer>
+        <!-- Marketing -->
+
+        <section id="marketing" class="page">
+
+            <h1>Marketing Center</h1>
+
+            <p>Share promotions and new arrivals.</p>
+
+        </section>
+
+        <!-- Settings -->
+
+        <section id="settings" class="page">
+
+            <h1>Settings</h1>
+
+            <p>Configure your business information and integrations.</p>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
