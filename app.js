@@ -74,9 +74,10 @@ saveCustomer.addEventListener("click", () => {
         JSON.stringify(customers)
     );
 
-    displayCustomers();
+displayCustomers();
+updateDashboard();
 
-    customerForm.style.display = "none";
+customerForm.style.display = "none";
 
     document.getElementById("customerName").value = "";
     document.getElementById("customerPhone").value = "";
