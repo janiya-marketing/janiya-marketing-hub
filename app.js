@@ -69,10 +69,10 @@ saveCustomer.addEventListener("click", () => {
 
     customers.push(customer);
 
-    localStorage.setItem(
-        "janiyaCustomers",
-        JSON.stringify(customers)
-    );
+localStorage.setItem(
+    "janiyaCustomers",
+    JSON.stringify(customers)
+);
 
 displayCustomers();
 updateDashboard();
@@ -126,7 +126,18 @@ searchCustomer.addEventListener("keyup", () => {
 
 // Load saved customers
 displayCustomers();
+// Update Dashboard
+function updateDashboard() {
 
+    const totalCustomers = document.getElementById("totalCustomers");
+
+    if (totalCustomers) {
+        totalCustomers.textContent = customers.length;
+    }
+
+}
+
+updateDashboard();
 
 // =====================================
 // Communication Center
