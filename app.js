@@ -76,6 +76,8 @@ localStorage.setItem(
 
 displayCustomers();
 updateDashboard();
+// Update dashboard when page loads
+updateDashboard();
 
 customerForm.style.display = "none";
 
