@@ -1,109 +1,228 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f8f8f8;
-    color: #333;
+  /* =====================================
+   JANIYA Customer Marketing System
+   Main Style
+===================================== */
+
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
 }
 
-header {
-    background-color: #111827;
-    color: white;
-    text-align: center;
-    padding: 30px;
+
+body{
+
+    font-family:Arial, sans-serif;
+
+    background:#f3f4f6;
+
+    color:#111827;
+
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
+
+
+.container{
+
+    display:flex;
+
+    min-height:100vh;
+
 }
 
-section {
-    background: white;
-    margin: 30px auto;
-    padding: 30px;
-    max-width: 800px;
-    border-radius: 10px;
-    text-align: center;
+
+
+/* =========================
+   Sidebar
+========================= */
+
+
+.sidebar{
+
+    width:260px;
+
+    background:#111827;
+
+    color:white;
+
+    padding:25px;
+
 }
 
-h2 {
-    color: #111827;
+
+
+.logo{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
 }
 
-p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-.hero {
-    text-align: center;
-    padding: 60px 20px;
-    background-color: #ffffff;
+
+.logo h2{
+
+    font-size:30px;
+
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    background-color: #111827;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+
+
+.logo p{
+
+    font-size:14px;
+
+    color:#9ca3af;
+
 }
 
-.btn:hover {
-    opacity: 0.8;
+
+
+nav{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
 }
 
-.services {
-    text-align: center;
+
+
+.menu-btn{
+
+    border:none;
+
+    background:none;
+
+    color:white;
+
+    padding:15px;
+
+    text-align:left;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    border-radius:10px;
+
 }
 
-.service-card {
-    background-color: #ffffff;
-    margin: 20px auto;
-    padding: 25px;
-    max-width: 300px;
-    border-radius: 10px;
+
+
+.menu-btn:hover,
+.menu-btn.active{
+
+    background:#2563eb;
+
 }
 
-.service-card h3 {
-    color: #111827;
-} 
-footer {
-    background-color: #111827;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    margin-top: 40px;
+
+
+/* =========================
+   Main Content
+========================= */
+
+
+.content{
+
+    flex:1;
+
+    padding:40px;
+
 }
 
-footer h3 {
-    margin-bottom: 10px;
+
+
+.page{
+
+    display:none;
+
 }
 
-footer p {
-    font-size: 16px;
+
+
+.active-page{
+
+    display:block;
+
 }
 
-.hero h2 {
-    font-size: 36px;
+
+
+h1{
+
+    margin-bottom:30px;
+
 }
 
-.services {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+
+
+/* =========================
+   Dashboard Cards
+========================= */
+
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
 }
 
-.service-card {
-    width: 280px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+
+
+.card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
+
+
+.card h3{
+
+    margin-bottom:15px;
+
+    color:#6b7280;
+
+}
+
+
+
+.card h2{
+
+    font-size:35px;
+
+}
+
+
+
+/* =========================
+   Sections
+========================= */
+
+
+.page p{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:12px;
+
 }
