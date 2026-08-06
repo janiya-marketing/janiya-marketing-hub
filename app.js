@@ -1,228 +1,254 @@
- /* =====================================
-   JANIYA Customer Marketing System
-   Main Style
-===================================== */
+  // =====================================
+// JANIYA Customer Marketing System
+// =====================================
+
+// ----------------------------
+// Navigation
+// ----------------------------
+const menuButtons = document.querySelectorAll(".menu-btn");
+const pages = document.querySelectorAll(".page");
+
+menuButtons.forEach(button => {
+    button.addEventListener("click", () => {
+
+        menuButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        pages.forEach(page => page.classList.remove("active-page"));
+
+        document
+            .getElementById(button.dataset.section)
+            .classList.add("active-page");
+    });
+});
 
 
-*{
+// ----------------------------
+// Customer Management
+// ----------------------------
 
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+let customers = JSON.parse(localStorage.getItem("janiyaCustomers")) || [];
 
+const addCustomerBtn = document.getElementById("addCustomerBtn");
+const customerForm = document.getElementById("customerForm");
+const saveCustomer = document.getElementById("saveCustomer");
+const customerList = document.getElementById("customerList");
+const searchCustomer = document.getElementById("searchCustomer");
+
+
+// Hide form when page opens
+customerForm.style.display = "none";
+
+
+// Open form
+addCustomerBtn.addEventListener("click", () => {
+    customerForm.style.display = "block";
+});
+
+
+// Save customer
+saveCustomer.addEventListener("click", () => {
+
+    const name = document.getElementById("customerName").value;
+    const phone = document.getElementById("customerPhone").value;
+    const email = document.getElementById("customerEmail").value;
+    const group = document.getElementById("customerGroup").value;
+
+    if (name === "" || phone === "") {
+        alert("Please enter customer name and phone number.");
+        return;
+    }
+
+    const customer = {
+        name,
+        phone,
+        email,
+        group,
+        joined: new Date().toLocaleDateString()
+    };
+
+    customers.push(customer);
+
+    localStorage.setItem(
+        "janiyaCustomers",
+        JSON.stringify(customers)
+    );
+
+displayCustomers();
+updateDashboard();
+
+customerForm.style.display = "none";
+
+    document.getElementById("customerName").value = "";
+    document.getElementById("customerPhone").value = "";
+    document.getElementById("customerEmail").value = "";
+    document.getElementById("customerGroup").selectedIndex = 0;
+    document.getElementById("customerNotes").value = "";
+
+    alert("Customer saved successfully!");
+});
+
+
+// Display customers
+function displayCustomers(list = customers) {
+
+    customerList.innerHTML = "";
+
+    list.forEach(customer => {
+
+        customerList.innerHTML += `
+            <tr>
+                <td>${customer.name}</td>
+                <td>${customer.phone}</td>
+                <td>${customer.group}</td>
+                <td>${customer.email}</td>
+                <td>${customer.joined}</td>
+            </tr>
+        `;
+    });
 }
 
 
-body{
+// Search customers
+searchCustomer.addEventListener("keyup", () => {
 
-    font-family:Arial, sans-serif;
+    const text = searchCustomer.value.toLowerCase();
 
-    background:#f3f4f6;
+    const filtered = customers.filter(customer =>
+        customer.name.toLowerCase().includes(text) ||
+        customer.phone.toLowerCase().includes(text)
+    );
 
-    color:#111827;
+    displayCustomers(filtered);
 
-}
-
-
-
-.container{
-
-    display:flex;
-
-    min-height:100vh;
-
-}
+});
 
 
-
-/* =========================
-   Sidebar
-========================= */
+// Load saved customers
+displayCustomers();
 
 
-.sidebar{
+// =====================================
+// Communication Center
+// =====================================
 
-    width:260px;
+const messageCustomer = document.getElementById("messageCustomer");
+const messageText = document.getElementById("messageText");
+const sendWhatsApp = document.getElementById("sendWhatsApp");
+const sendSMS = document.getElementById("sendSMS");
+const sendAllSMS = document.getElementById("sendAllSMS");
 
-    background:#111827;
+// Fill customer dropdown
+function loadCustomerList() {
 
-    color:white;
+    messageCustomer.innerHTML =
+        '<option value="">Select Customer</option>';
 
-    padding:25px;
+    customers.forEach((customer, index) => {
 
-}
+        messageCustomer.innerHTML += `
+            <option value="${index}">
+                ${customer.name} (${customer.phone})
+            </option>
+        `;
 
-
-
-.logo{
-
-    text-align:center;
-
-    margin-bottom:40px;
+    });
 
 }
 
+loadCustomerList();
 
-.logo h2{
 
-    font-size:30px;
+// Refresh dropdown after adding a customer
+const oldDisplayCustomers = displayCustomers;
 
-}
+displayCustomers = function(list = customers) {
+    oldDisplayCustomers(list);
+    loadCustomerList();
+};
 
 
+// Send WhatsApp message
+sendWhatsApp.addEventListener("click", () => {
 
-.logo p{
+    if (messageCustomer.value === "") {
+        alert("Please select a customer.");
+        return;
+    }
 
-    font-size:14px;
+    if (messageText.value.trim() === "") {
+        alert("Please type a message.");
+        return;
+    }
 
-    color:#9ca3af;
+    const customer = customers[messageCustomer.value];
 
-}
+    const phone = customer.phone.replace(/\D/g, "");
 
+    const url =
+        `https://wa.me/${phone}?text=${encodeURIComponent(messageText.value)}`;
 
+    window.open(url, "_blank");
 
-nav{
+});
 
-    display:flex;
 
-    flex-direction:column;
 
-    gap:15px;
+ 
+// Send SMS message
 
-}
+sendSMS.addEventListener("click", () => {
 
+    if (messageCustomer.value === "") {
+        alert("Please select a customer.");
+        return;
+    }
 
 
-.menu-btn{
+    if (messageText.value.trim() === "") {
+        alert("Please write a message.");
+        return;
+    }
 
-    border:none;
 
-    background:none;
+    const customer = customers[messageCustomer.value];
 
-    color:white;
 
-    padding:15px;
+    const phone = customer.phone;
 
-    text-align:left;
 
-    font-size:16px;
+    const smsLink =
+        `sms:${phone}?body=${encodeURIComponent(messageText.value)}`;
 
-    cursor:pointer;
 
-    border-radius:10px;
+    window.open(smsLink, "_blank");
 
-}
+});
+// Send SMS to all customers
 
+sendAllSMS.addEventListener("click", () => {
 
+    if (messageText.value.trim() === "") {
+        alert("Please write a message.");
+        return;
+    }
 
-.menu-btn:hover,
-.menu-btn.active{
 
-    background:#2563eb;
+    if (customers.length === 0) {
+        alert("No customers available.");
+        return;
+    }
 
-}
 
+    customers.forEach(customer => {
 
+        const phone = customer.phone;
 
-/* =========================
-   Main Content
-========================= */
+        const smsLink =
+            `sms:${phone}?body=${encodeURIComponent(messageText.value)}`;
 
+        window.open(smsLink, "_blank");
 
-.content{
+    });
 
-    flex:1;
-
-    padding:40px;
-
-}
-
-
-
-.page{
-
-    display:none;
-
-}
-
-
-
-.active-page{
-
-    display:block;
-
-}
-
-
-
-h1{
-
-    margin-bottom:30px;
-
-}
-
-
-
-/* =========================
-   Dashboard Cards
-========================= */
-
-
-.cards{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:25px;
-
-}
-
-
-
-.card{
-
-    background:white;
-
-    padding:30px;
-
-    border-radius:15px;
-
-    box-shadow:0 5px 15px rgba(0,0,0,0.08);
-
-}
-
-
-
-.card h3{
-
-    margin-bottom:15px;
-
-    color:#6b7280;
-
-}
-
-
-
-.card h2{
-
-    font-size:35px;
-
-}
-
-
-
-/* =========================
-   Sections
-========================= */
-
-
-.page p{
-
-    background:white;
-
-    padding:25px;
-
-    border-radius:12px;
-
-}
+});
