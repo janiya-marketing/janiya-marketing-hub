@@ -28,6 +28,16 @@ menuButtons.forEach(button => {
 // ----------------------------
 
 let customers = JSON.parse(localStorage.getItem("janiyaCustomers")) || [];
+// Update Dashboard
+function updateDashboard(){
+
+    const totalCustomers = document.getElementById("totalCustomers");
+
+    if(totalCustomers){
+        totalCustomers.textContent = customers.length;
+    }
+
+}
 
 const addCustomerBtn = document.getElementById("addCustomerBtn");
 const customerForm = document.getElementById("customerForm");
@@ -265,3 +275,6 @@ sendAllSMS.addEventListener("click", () => {
     });
 
 });
+
+// Load dashboard count when opening page
+updateDashboard();
