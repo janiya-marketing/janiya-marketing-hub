@@ -1,15 +1,13 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JANIYA Customer Marketing System</title>
 
-    <title>JANIYA Customer Marketing System</title>
-
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -18,37 +16,33 @@
 <div class="container">
 
     <!-- Sidebar -->
-
     <aside class="sidebar">
 
         <div class="logo">
-
             <h2>JANIYA</h2>
-
-            <p>Customer Marketing</p>
-
+            <p>Marketing System</p>
         </div>
 
         <nav>
 
-            <button class="menu-btn active" data-section="dashboard">
-                🏠 Dashboard
+            <button class="menu-btn active" data-page="dashboard">
+                Dashboard
             </button>
 
-           <button class="menu-btn" data-section="customers">
-                👥 Customers
-            </button> 
-
-            <button class="menu-btn" data-section="communication">
-                💬 Communication
+            <button class="menu-btn" data-page="customers">
+                Customers
             </button>
 
-            <button class="menu-btn" data-section="marketing">
-                📢 Marketing
+            <button class="menu-btn" data-page="communication">
+                Communication
             </button>
 
-            <button class="menu-btn" data-section="settings">
-                ⚙ Settings
+            <button class="menu-btn" data-page="marketing">
+                Marketing
+            </button>
+
+            <button class="menu-btn" data-page="settings">
+                Settings
             </button>
 
         </nav>
@@ -56,39 +50,28 @@
     </aside>
 
     <!-- Main Content -->
-
     <main class="content">
 
         <!-- Dashboard -->
+        <section id="dashboard" class="page active">
 
-        <section id="dashboard" class="page active-page">
-
-            <h1>Welcome to JANIYA Customer Marketing System</h1>
+            <h1>Dashboard</h1>
 
             <div class="cards">
 
                 <div class="card">
-
                     <h3>Total Customers</h3>
-
                     <h2 id="totalCustomers">0</h2>
-
                 </div>
 
                 <div class="card">
-
-                    <h3>Today's Messages</h3>
-
-                    <h2 id="todayMessages">0</h2>
-
+                    <h3>WhatsApp Messages</h3>
+                    <h2 id="whatsappCount">0</h2>
                 </div>
 
                 <div class="card">
-
-                    <h3>Marketing Campaigns</h3>
-
-                    <h2 id="campaignCount">0</h2>
-
+                    <h3>SMS Messages</h3>
+                    <h2 id="smsCount">0</h2>
                 </div>
 
             </div>
@@ -96,186 +79,131 @@
         </section>
 
         <!-- Customers -->
+        <section id="customers" class="page">
 
-       <section id="customers" class="page">
+            <h1>Customers</h1>
 
+            <div class="customer-form">
 
-<h1>Customer Database</h1>
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Customer Name"
+                >
 
+                <input
+                    type="text"
+                    id="customerPhone"
+                    placeholder="Phone Number"
+                >
 
-<button id="addCustomerBtn">
-    + Add Customer
-</button>
+                <select id="customerGroup">
 
+                    <option value="Regular">Regular</option>
 
+                    <option value="VIP">VIP</option>
 
-<div id="customerForm" class="form-box">
+                    <option value="Wholesale">Wholesale</option>
 
+                </select>
 
-<h2>Add New Customer</h2>
+                <button id="saveCustomer">
+                    Save Customer
+                </button>
 
+            </div>
 
-<input 
-id="customerName"
-type="text"
-placeholder="Customer Name">
+            <input
+                type="text"
+                id="searchCustomer"
+                placeholder="Search Customer..."
+            >
 
+            <table id="customerTable">
 
+                <thead>
 
-<input 
-id="customerPhone"
-type="text"
-placeholder="Phone Number">
+                    <tr>
 
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Group</th>
+                        <th>Actions</th>
 
+                    </tr>
 
-<input 
-id="customerEmail"
-type="email"
-placeholder="Email Address">
+                </thead>
 
+                <tbody>
 
+                </tbody>
 
-<select id="customerGroup">
+            </table>
 
-<option>Regular</option>
+        </section>
 
-<option>VIP</option>
+        <!-- Communication -->
+        <section id="communication" class="page">
 
-<option>Wholesale</option>
+            <h1>Communication</h1>
 
-</select>
+            <select id="messageCustomer"></select>
 
+            <textarea
+                id="messageText"
+                placeholder="Type your message..."
+            ></textarea>
 
+            <div class="buttons">
 
-<textarea
-id="customerNotes"
-placeholder="Customer Notes">
-</textarea>
+                <button id="sendWhatsApp">
+                    Send WhatsApp
+                </button>
 
+                <button id="sendSMS">
+                    Send SMS
+                </button>
 
+            </div>
 
-<button id="saveCustomer">
-Save Customer
-</button>
-
-
-</div>
-
-
-
-
- <div class="table-box">
-
-<h2>Customers</h2>
-
-<input
-id="searchCustomer"
-placeholder="Search customer...">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Name</th>
-
-<th>Phone</th>
-
-<th>Group</th>
-
-<th>Email</th>
-
-<th>Date Joined</th>
-
-</tr>
-
-</thead>
-
-
-<tbody id="customerList">
-
-
-</tbody>
-
-
-</table>
-
-
-</div>
-
-
-</section>
-
-        <!-- Communicati<table>on -->
-
-       <section id="communication" class="page">
-
-    <h1>Communication Center</h1>
-
-    <p>Send messages to your customers.</p>
-
-
-    <select id="messageCustomer">
-
-        <option value="">
-            Select Customer
-        </option>
-
-    </select>
-
-
-    <textarea
-        id="messageText"
-        placeholder="Write your message here..."
-        rows="6">
-    </textarea>
-
-
-    <br><br>
-
-
-    <button id="sendWhatsApp">
-    📱 Send WhatsApp
-</button>
-
-<button id="sendSMS">
-    💬 Send SMS
-</button>
-
-<button id="sendAllSMS">
-    📢 Send SMS to All Customers
-</button>
-
-
-</section>
+        </section>
 
         <!-- Marketing -->
-
         <section id="marketing" class="page">
 
-            <h1>Marketing Center</h1>
+            <h1>Marketing</h1>
 
-            <p>Share promotions and new arrivals.</p>
+            <textarea
+                id="promotionMessage"
+                placeholder="Promotion message..."
+            ></textarea>
+
+            <button id="copyPromotion">
+                Copy Promotion
+            </button>
 
         </section>
 
         <!-- Settings -->
-
         <section id="settings" class="page">
 
             <h1>Settings</h1>
 
-            <p>Configure your business information and integrations.</p>
+            <button id="exportCustomers">
+                Export Customers
+            </button>
+
+            <button id="clearCustomers">
+                Delete All Customers
+            </button>
 
         </section>
 
     </main>
 
 </div>
-  <script src="app.js"></script>
+
+<script src="app.js"></script>
 
 </body>
-
 </html>
