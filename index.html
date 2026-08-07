@@ -19,50 +19,51 @@
 <div class="container">
 
 
-<!-- ================= SIDEBAR ================= -->
+<!-- SIDEBAR -->
 
 <aside class="sidebar">
 
-    <div class="logo">
-        <h2>JANIYA</h2>
-        <p>Customer Marketing</p>
-    </div>
+<div class="logo">
+
+<h2>JANIYA</h2>
+<p>Customer Marketing</p>
+
+</div>
 
 
-    <nav>
+<nav>
 
-        <button class="menu-btn active" data-page="dashboard">
-            Dashboard
-        </button>
-
-
-        <button class="menu-btn" data-page="customers">
-            Customers
-        </button>
+<button class="menu-btn active" data-page="dashboard">
+Dashboard
+</button>
 
 
-        <button class="menu-btn" data-page="communication">
-            Communication
-        </button>
+<button class="menu-btn" data-page="customers">
+Customers
+</button>
 
 
-        <button class="menu-btn" data-page="marketing">
-            Marketing
-        </button>
+<button class="menu-btn" data-page="communication">
+Communication
+</button>
 
 
-        <button class="menu-btn" data-page="automation">
-            Automation
-        </button>
+<button class="menu-btn" data-page="marketing">
+Marketing
+</button>
 
 
-        <button class="menu-btn" data-page="settings">
-            Settings
-        </button>
+<button class="menu-btn" data-page="automation">
+Automation
+</button>
 
 
-    </nav>
+<button class="menu-btn" data-page="settings">
+Settings
+</button>
 
+
+</nav>
 
 </aside>
 
@@ -70,17 +71,15 @@
 
 
 
-<!-- ================= MAIN CONTENT ================= -->
+<!-- MAIN CONTENT -->
 
-<main class="content">
-
-
+<main class="main">
 
 
 
 <!-- DASHBOARD -->
 
-<section id="dashboard" class="page active">
+<section id="dashboard" class="page active-page">
 
 
 <h1>Dashboard</h1>
@@ -93,34 +92,20 @@
 
 <h3>Total Customers</h3>
 
-<h2 id="totalCustomers">
+<p id="totalCustomers">
 0
-</h2>
+</p>
 
 </div>
 
 
-
 <div class="card">
 
-<h3>SMS Sent</h3>
+<h3>Messages</h3>
 
-<h2 id="smsCount">
+<p id="totalMessages">
 0
-</h2>
-
-</div>
-
-
-
-
-<div class="card">
-
-<h3>WhatsApp Sent</h3>
-
-<h2 id="whatsappCount">
-0
-</h2>
+</p>
 
 </div>
 
@@ -134,8 +119,6 @@
 
 
 
-
-
 <!-- CUSTOMERS -->
 
 <section id="customers" class="page">
@@ -144,54 +127,45 @@
 <h1>Customers</h1>
 
 
+<button id="addCustomerBtn">
+Add Customer
+</button>
 
-<div class="customer-form">
+
+
+<div id="customerForm">
 
 
 <input 
-type="text"
 id="customerName"
-placeholder="Customer Name"
->
-
+placeholder="Customer Name">
 
 
 <input 
-type="text"
 id="customerPhone"
-placeholder="Phone Number"
->
+placeholder="Phone Number">
 
+
+<input 
+id="customerEmail"
+placeholder="Email">
 
 
 <select id="customerGroup">
 
-
-<option value="Regular">
+<option>
 Regular
 </option>
 
-
-<option value="VIP">
+<option>
 VIP
 </option>
 
-
-<option value="Wholesale">
+<option>
 Wholesale
 </option>
 
-
 </select>
-
-
-
-
-<textarea
-id="customerNotes"
-placeholder="Customer notes (optional)">
-</textarea>
-
 
 
 <button id="saveCustomer">
@@ -203,21 +177,15 @@ Save Customer
 
 
 
-
-
-<input
+<input 
 id="searchCustomer"
-placeholder="Search customer..."
->
+placeholder="Search customer...">
 
 
-
-
-<table id="customerTable">
+<table>
 
 
 <thead>
-
 
 <tr>
 
@@ -227,18 +195,16 @@ placeholder="Search customer..."
 
 <th>Group</th>
 
-<th>Date Added</th>
+<th>Email</th>
 
-<th>Actions</th>
-
+<th>Date</th>
 
 </tr>
-
 
 </thead>
 
 
-<tbody>
+<tbody id="customerList">
 
 </tbody>
 
@@ -260,28 +226,26 @@ placeholder="Search customer..."
 <section id="communication" class="page">
 
 
-<h1>Communication</h1>
-
+<h1>Communication Center</h1>
 
 
 <select id="messageCustomer">
 
-<option>
+<option value="">
 Select Customer
 </option>
+
 
 </select>
 
 
 
-<textarea
+<textarea 
 id="messageText"
-placeholder="Write your message">
+placeholder="Write message">
+
 </textarea>
 
-
-
-<div class="buttons">
 
 
 <button id="sendWhatsApp">
@@ -294,13 +258,13 @@ Send SMS
 </button>
 
 
-
-</div>
+<button id="sendAllSMS">
+Send SMS To All
+</button>
 
 
 
 </section>
-
 
 
 
@@ -316,21 +280,21 @@ Send SMS
 <h1>Marketing</h1>
 
 
+<textarea 
+id="marketingMessage"
+placeholder="Promotion message">
 
-<textarea
-id="promotionMessage"
-placeholder="Write promotion message">
 </textarea>
 
 
+<button id="sendMarketing">
 
-<button id="copyPromotion">
-Copy Message
+Send Promotion
+
 </button>
 
 
 </section>
-
 
 
 
@@ -343,86 +307,36 @@ Copy Message
 <section id="automation" class="page">
 
 
-<h1>Thank You Message Automation</h1>
-
-
+<h1>Automation</h1>
 
 
 <label>
 
 <input 
 type="checkbox"
-id="thankYouEnabled"
->
+id="thankYouEnabled">
 
 Enable Thank You Messages
 
 </label>
 
 
-
-
-
 <br><br>
 
 
-
 <label>
-Send Method:
-</label>
 
-
-<select id="thankYouMethod">
-
-
-<option value="whatsapp">
-WhatsApp
-</option>
-
-
-<option value="sms">
-SMS
-</option>
-
-
-</select>
-
-
-
-
-
-<br><br>
-
-
-
-
-<label>
 Send Time:
-</label>
-
 
 <input 
 type="time"
 id="thankYouTime"
-value="18:00"
->
+value="18:00">
+
+</label>
 
 
-
-
-<textarea
-id="thankYouMessage"
-placeholder="Thank you message">
-
-Hello {name},
-
-Thank you for shopping with JANIYA.
-
-We appreciate your support.
-
-</textarea>
-
-
+<br><br>
 
 
 <button id="saveAutomation">
@@ -441,8 +355,6 @@ Save Automation
 
 
 
-
-
 <!-- SETTINGS -->
 
 <section id="settings" class="page">
@@ -451,22 +363,12 @@ Save Automation
 <h1>Settings</h1>
 
 
-
-<button id="exportCustomers">
-Export Customers
-</button>
-
-
-
-<button id="clearCustomers">
-Delete All Customers
-</button>
-
+<p>
+JANIYA Customer Marketing System
+</p>
 
 
 </section>
-
-
 
 
 
@@ -474,7 +376,6 @@ Delete All Customers
 
 
 </div>
-
 
 
 
