@@ -1,5 +1,6 @@
  <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -11,199 +12,476 @@
 
 </head>
 
+
 <body>
+
 
 <div class="container">
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
 
-        <div class="logo">
-            <h2>JANIYA</h2>
-            <p>Marketing System</p>
-        </div>
+<!-- ================= SIDEBAR ================= -->
 
-        <nav>
+<aside class="sidebar">
 
-            <button class="menu-btn active" data-page="dashboard">
-                Dashboard
-            </button>
+    <div class="logo">
+        <h2>JANIYA</h2>
+        <p>Customer Marketing</p>
+    </div>
 
-            <button class="menu-btn" data-page="customers">
-                Customers
-            </button>
 
-            <button class="menu-btn" data-page="communication">
-                Communication
-            </button>
+    <nav>
 
-            <button class="menu-btn" data-page="marketing">
-                Marketing
-            </button>
+        <button class="menu-btn active" data-page="dashboard">
+            Dashboard
+        </button>
 
-            <button class="menu-btn" data-page="settings">
-                Settings
-            </button>
 
-        </nav>
+        <button class="menu-btn" data-page="customers">
+            Customers
+        </button>
 
-    </aside>
 
-    <!-- Main Content -->
-    <main class="content">
+        <button class="menu-btn" data-page="communication">
+            Communication
+        </button>
 
-        <!-- Dashboard -->
-        <section id="dashboard" class="page active">
 
-            <h1>Dashboard</h1>
+        <button class="menu-btn" data-page="marketing">
+            Marketing
+        </button>
 
-            <div class="cards">
 
-                <div class="card">
-                    <h3>Total Customers</h3>
-                    <h2 id="totalCustomers">0</h2>
-                </div>
+        <button class="menu-btn" data-page="automation">
+            Automation
+        </button>
 
-                <div class="card">
-                    <h3>WhatsApp Messages</h3>
-                    <h2 id="whatsappCount">0</h2>
-                </div>
 
-                <div class="card">
-                    <h3>SMS Messages</h3>
-                    <h2 id="smsCount">0</h2>
-                </div>
+        <button class="menu-btn" data-page="settings">
+            Settings
+        </button>
 
-            </div>
 
-        </section>
+    </nav>
 
-        <!-- Customers -->
-        <section id="customers" class="page">
 
-            <h1>Customers</h1>
+</aside>
 
-            <div class="customer-form">
 
-                <input
-                    type="text"
-                    id="customerName"
-                    placeholder="Customer Name"
-                >
 
-                <input
-                    type="text"
-                    id="customerPhone"
-                    placeholder="Phone Number"
-                >
 
-                <select id="customerGroup">
 
-                    <option value="Regular">Regular</option>
+<!-- ================= MAIN CONTENT ================= -->
 
-                    <option value="VIP">VIP</option>
+<main class="content">
 
-                    <option value="Wholesale">Wholesale</option>
 
-                </select>
 
-                <button id="saveCustomer">
-                    Save Customer
-                </button>
 
-            </div>
 
-            <input
-                type="text"
-                id="searchCustomer"
-                placeholder="Search Customer..."
-            >
+<!-- DASHBOARD -->
 
-            <table id="customerTable">
+<section id="dashboard" class="page active">
 
-                <thead>
 
-                    <tr>
+<h1>Dashboard</h1>
 
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Group</th>
-                        <th>Actions</th>
 
-                    </tr>
+<div class="cards">
 
-                </thead>
 
-                <tbody>
+<div class="card">
 
-                </tbody>
+<h3>Total Customers</h3>
 
-            </table>
-
-        </section>
-
-        <!-- Communication -->
-        <section id="communication" class="page">
-
-            <h1>Communication</h1>
-
-            <select id="messageCustomer"></select>
-
-            <textarea
-                id="messageText"
-                placeholder="Type your message..."
-            ></textarea>
-
-            <div class="buttons">
-
-                <button id="sendWhatsApp">
-                    Send WhatsApp
-                </button>
-
-                <button id="sendSMS">
-                    Send SMS
-                </button>
-
-            </div>
-
-        </section>
-
-        <!-- Marketing -->
-        <section id="marketing" class="page">
-
-            <h1>Marketing</h1>
-
-            <textarea
-                id="promotionMessage"
-                placeholder="Promotion message..."
-            ></textarea>
-
-            <button id="copyPromotion">
-                Copy Promotion
-            </button>
-
-        </section>
-
-        <!-- Settings -->
-        <section id="settings" class="page">
-
-            <h1>Settings</h1>
-
-            <button id="exportCustomers">
-                Export Customers
-            </button>
-
-            <button id="clearCustomers">
-                Delete All Customers
-            </button>
-
-        </section>
-
-    </main>
+<h2 id="totalCustomers">
+0
+</h2>
 
 </div>
 
+
+
+<div class="card">
+
+<h3>SMS Sent</h3>
+
+<h2 id="smsCount">
+0
+</h2>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>WhatsApp Sent</h3>
+
+<h2 id="whatsappCount">
+0
+</h2>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- CUSTOMERS -->
+
+<section id="customers" class="page">
+
+
+<h1>Customers</h1>
+
+
+
+<div class="customer-form">
+
+
+<input 
+type="text"
+id="customerName"
+placeholder="Customer Name"
+>
+
+
+
+<input 
+type="text"
+id="customerPhone"
+placeholder="Phone Number"
+>
+
+
+
+<select id="customerGroup">
+
+
+<option value="Regular">
+Regular
+</option>
+
+
+<option value="VIP">
+VIP
+</option>
+
+
+<option value="Wholesale">
+Wholesale
+</option>
+
+
+</select>
+
+
+
+
+<textarea
+id="customerNotes"
+placeholder="Customer notes (optional)">
+</textarea>
+
+
+
+<button id="saveCustomer">
+Save Customer
+</button>
+
+
+</div>
+
+
+
+
+
+<input
+id="searchCustomer"
+placeholder="Search customer..."
+>
+
+
+
+
+<table id="customerTable">
+
+
+<thead>
+
+
+<tr>
+
+<th>Name</th>
+
+<th>Phone</th>
+
+<th>Group</th>
+
+<th>Date Added</th>
+
+<th>Actions</th>
+
+
+</tr>
+
+
+</thead>
+
+
+<tbody>
+
+</tbody>
+
+
+</table>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- COMMUNICATION -->
+
+<section id="communication" class="page">
+
+
+<h1>Communication</h1>
+
+
+
+<select id="messageCustomer">
+
+<option>
+Select Customer
+</option>
+
+</select>
+
+
+
+<textarea
+id="messageText"
+placeholder="Write your message">
+</textarea>
+
+
+
+<div class="buttons">
+
+
+<button id="sendWhatsApp">
+Send WhatsApp
+</button>
+
+
+<button id="sendSMS">
+Send SMS
+</button>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- MARKETING -->
+
+<section id="marketing" class="page">
+
+
+<h1>Marketing</h1>
+
+
+
+<textarea
+id="promotionMessage"
+placeholder="Write promotion message">
+</textarea>
+
+
+
+<button id="copyPromotion">
+Copy Message
+</button>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- AUTOMATION -->
+
+<section id="automation" class="page">
+
+
+<h1>Thank You Message Automation</h1>
+
+
+
+
+<label>
+
+<input 
+type="checkbox"
+id="thankYouEnabled"
+>
+
+Enable Thank You Messages
+
+</label>
+
+
+
+
+
+<br><br>
+
+
+
+<label>
+Send Method:
+</label>
+
+
+<select id="thankYouMethod">
+
+
+<option value="whatsapp">
+WhatsApp
+</option>
+
+
+<option value="sms">
+SMS
+</option>
+
+
+</select>
+
+
+
+
+
+<br><br>
+
+
+
+
+<label>
+Send Time:
+</label>
+
+
+<input 
+type="time"
+id="thankYouTime"
+value="18:00"
+>
+
+
+
+
+<textarea
+id="thankYouMessage"
+placeholder="Thank you message">
+
+Hello {name},
+
+Thank you for shopping with JANIYA.
+
+We appreciate your support.
+
+</textarea>
+
+
+
+
+<button id="saveAutomation">
+
+Save Automation
+
+</button>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- SETTINGS -->
+
+<section id="settings" class="page">
+
+
+<h1>Settings</h1>
+
+
+
+<button id="exportCustomers">
+Export Customers
+</button>
+
+
+
+<button id="clearCustomers">
+Delete All Customers
+</button>
+
+
+
+</section>
+
+
+
+
+
+</main>
+
+
+</div>
+
+
+
+
+
 <script src="app.js"></script>
 
+
 </body>
+
 </html>
